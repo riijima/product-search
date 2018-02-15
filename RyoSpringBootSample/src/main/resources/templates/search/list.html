@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></head>
+<body>
+
+	<h1>検索結果</h1>
+	
+	<form id="listForm" method="post" action="/search/list.html" th:action="@{/product/input}" th:object="${searchForm}" class="form-horizontal">
+	<div style="width: 90%; text-align: center;">
+	
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+				<tr>
+					<th></th>
+					<th>productId</th>
+					<th>prouctName</th>
+					<th>makerName</th>
+					<th></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td><img src="../../static/image/no_image.png" th:src="@{url != null ? ${url} :'../../static/image/no_image.png'}" width="80" height="80" /></td>
+					<td>100</td>
+					<td>チョコクッキー</td>
+					<td>森永製菓（株）</td>
+					<td><a href="javascript:void(0)" class="link_edit" data-id="100">編集</a></td>
+				</tr>
+				<tr>
+					<td><img src="../../static/image/no_image.png" width="80" height="80" /></td>
+					<td>101</td>
+					<td>ルマンド</td>
+					<td>（株）ブルボン</td>
+					<td><a href="javascript:void(0)" class="link_edit" data-id="101">編集</a></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<input type="hidden" id="productId" name="productId" />
+		<div class="center">
+			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{condition}" th:formmethod="@{get}">戻る</button>
+		</div>
+
+	</div>
+	</form>
+	
+	<script type="text/javascript">
+		$(function(){
+			$('.link_edit').click(function(){
+				//alert($(this).data('id'));
+				var id = $(this).data('id');
+
+				$('#productId').val(id);
+				$('#listForm').submit();
+			});
+		});
+	</script>
+
+</body>
+</html>

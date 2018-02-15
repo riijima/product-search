@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></head>
+<body>
+
+	<h1>商品登録</h1>
+	
+	<form id="productForm" method="post" action="/search/list.html" th:action="@{condition}" th:object="${productForm}" class="form-horizontal">
+	
+	<div style="width: 90%; display: inline-block; text-align: center;">
+		<div class="form-group row">
+			<label for="productId" class="col-sm-2 col-form-label">商品ID</label>
+			<input type="text" class="col-sm-4 form-control" id="productId" placeholder="商品ID" th:field="*{productId}" th:value="${productId}" />
+		</div>
+	
+		<div class="form-group row">
+			<label for="productName" class="col-sm-2 col-form-label">商品名</label>
+			<input type="text" class="col-sm-4 form-control" id="productName" placeholder="商品名" th:field="*{productName}" th:value="${productName}" />
+		</div>
+	
+		<div class="form-group row">
+			<label for="productNameKana" class="col-sm-2 col-form-label">商品かな</label>
+			<input type="text" class="col-sm-4 form-control" id="productNameKana" placeholder="商品かな" th:field="*{productNameKana}" th:value="${productNameKana}" />
+		</div>
+		
+		<div>
+			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{/search/search}">戻る</button>
+			<button type="submit" id="btn_update" value="update" class="btn btn-primary" th:formaction="@{/product/confirm}">確認</button>
+		</div>
+	</div>
+
+	</form>
+
+</body>
+</html>

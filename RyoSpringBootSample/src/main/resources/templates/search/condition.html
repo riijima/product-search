@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></head>
+<body>
+
+	<h1>検索条件</h1>
+	
+	<form id="searchForm" method="post" action="/search/list.html" th:action="@{search}" th:object="${searchForm}" class="form-horizontal">
+	<div style="width: 90%; display: inline-block; text-align: center;">
+		<div class="form-group row">
+			<label for="productId" class="col-sm-2 col-form-label">商品ID</label>
+			<input type="text" class="col-sm-4 form-control" placeholder="商品ID" th:field="*{searchProductId}" th:value="${searchProductId}" />
+		</div>
+	
+		<div class="form-group row">
+			<label for="productName" class="col-sm-2 col-form-label">商品名</label>
+			<input type="text" class="col-sm-4 form-control" id="productName" placeholder="商品名" th:field="*{searchProductName}" th:value="${searchProductName}" />
+		</div>
+	
+		<div class="form-group row">
+			<label for="makerId" class="col-sm-2 col-form-label">メーカーID</label>
+			<input type="text" class="col-sm-4 form-control" id="makerId" placeholder="メーカーID" th:field="*{searchMakerId}" th:value="${searchMakerId}" />
+		</div>
+	
+		<div class="form-group row">
+			<label for="makerName" class="col-sm-2 col-form-label">メーカー名</label>
+			<input type="text" class="col-sm-4 form-control" id="makerName" placeholder="メーカー名" th:field="*{searchMakerName}" th:value="${searchMakerName}" />
+		</div>
+		
+		<div>
+			<button type="submit" id="btn_update" value="update" class="btn btn-primary" th:formaction="@{search}">検索</button>
+			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{/index}" th:formmethod="@{get}">戻る</button>
+		</div>
+	</div>
+	</form>
+
+</body>
+</html>

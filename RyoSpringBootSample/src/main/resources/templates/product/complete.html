@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"></link>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script></head>
+<body>
+
+	<h1>商品登録完了</h1>
+	
+	<form id="productForm" method="post" action="/product/complete.html" th:action="@{/search/search}" th:object="${productForm}" class="form-horizontal">
+	
+	<div style="width: 90%; display: inline-block; text-align: center;">
+		
+		<div>
+			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{/search/search}">一覧へ戻る</button>
+			<button type="submit" id="btn_update" value="update" class="btn btn-primary" th:formaction="@{/product/input}">新たに登録する</button>
+		</div>
+	</div>
+
+	</form>
+
+</body>
+</html>

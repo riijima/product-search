@@ -28,14 +28,20 @@
 				</thead>
 				<tbody>
 				<tr>
-					<td><img src="../../static/image/no_image.png" th:src="@{${#strings.defaultString(url, '/image/no_image.png')}}" width="80" height="80" /></td>
+					<td>
+					<img src="../../static/image/no_image.png" th:if="${url}" th:attr="src=@{${url}}" width="80" height="80" />
+					<img src="../../static/image/no_image.png" th:unless="${url}" th:attr="src=@{/image/no_image.png}" width="80" height="80" />
+					</td>
 					<td>100</td>
 					<td>チョコクッキー</td>
 					<td>森永製菓（株）</td>
 					<td><a href="javascript:void(0)" class="link_edit" data-id="100">編集</a></td>
 				</tr>
 				<tr>
-					<td><img src="../../static/image/no_image.png" th:src="@{${#strings.defaultString(url, '/image/no_image.png')}}" width="80" height="80" /></td>
+					<td>
+					<img src="../../static/image/no_image.png" th:if="${url}" th:attr="src=@{${url}}" width="80" height="80" />
+					<img src="../../static/image/no_image.png" th:unless="${url}" th:attr="src=@{/image/no_image.png}" width="80" height="80" />
+					</td>
 					<td>101</td>
 					<td>ルマンド</td>
 					<td>（株）ブルボン</td>

@@ -1,19 +1,20 @@
 package com.example.demo.web;
 
-import org.hibernate.validator.constraints.NotBlank;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ProductForm {
 
 	private Integer productId;
 	
-	@NotBlank
 	private String productName;
 	
 	private String productNameKana;
 	
-	private Integer makerId;
+	private List<Integer> tagIds;
 	
-	private String makerName;
+	private MultipartFile imageFile;
 
 	public Integer getProductId() {
 		return productId;
@@ -39,19 +40,19 @@ public class ProductForm {
 		this.productNameKana = productNameKana;
 	}
 
-	public Integer getMakerId() {
-		return makerId;
+	public List<Integer> getTagIds() {
+		return tagIds;
 	}
 
-	public void setMakerId(Integer makerId) {
-		this.makerId = makerId;
+	public void setTagIds(List<Integer> tagIds) {
+		this.tagIds = tagIds;
 	}
 
-	public String getMakerName() {
-		return makerName;
+	public MultipartFile getImageFile() {
+		return imageFile;
 	}
 
-	public void setMakerName(String makerName) {
-		this.makerName = makerName;
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
 	}
 }

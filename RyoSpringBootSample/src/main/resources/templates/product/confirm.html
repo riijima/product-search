@@ -16,18 +16,43 @@
 	
 	<div style="width: 90%; display: inline-block; text-align: center;">
 		<div class="form-group row">
-			<label for="productId" class="col-sm-2 col-form-label">商品ID</label>
-			<input type="text" class="col-sm-4 form-control" id="productId" placeholder="商品ID" th:field="*{productId}" th:value="${productId}" />
+			<label for="productId" class="col-sm-2 control-label">商品ID</label>
+			<input type="hidden" th:field="*{productId}"/>
+			<div class="col-sm-4">
+				<p class="form-control-static" th:text="*{productId}">XXXXXXXX</p>
+			</div>
 		</div>
 	
 		<div class="form-group row">
-			<label for="productName" class="col-sm-2 col-form-label">商品名</label>
-			<input type="text" class="col-sm-4 form-control" id="productName" placeholder="商品名" th:field="*{productName}" th:value="${productName}" />
+			<label for="productId" class="col-sm-2 control-label">商品名</label>
+			<input type="hidden" th:field="*{productName}"/>
+			<div class="col-sm-4">
+				<p class="form-control-static" th:text="*{productName}">XXXXXXXX</p>
+			</div>
 		</div>
 	
 		<div class="form-group row">
-			<label for="productNameKana" class="col-sm-2 col-form-label">商品かな</label>
-			<input type="text" class="col-sm-4 form-control" id="productNameKana" placeholder="商品かな" th:field="*{productNameKana}" th:value="${productNameKana}" />
+			<label for="productNameKana" class="col-sm-2 control-label">商品かな</label>
+			<input type="hidden" th:field="*{productNameKana}"/>
+			<div class="col-sm-4">
+				<p class="form-control-static" th:text="*{productNameKana}">XXXXXXXX</p>
+			</div>
+		</div>
+	
+		<div class="form-group row">
+			<label for="tagIds" class="col-sm-2 control-label">属性タグ</label>
+			<input type="hidden" th:field="*{tagIds}"/>
+			<div class="col-sm-4">
+				<p class="form-control-static" th:text="*{tagIds}">XXXXXXXX</p>
+			</div>
+		</div>
+	
+		<div class="form-group row">
+			<label for="tagIds" class="col-sm-2 control-label">参考画像ファイル</label>
+			<input type="hidden"/>
+			<div class="col-sm-4">
+				<p class="form-control-static">XXXXXXXX</p>
+			</div>
 		</div>
 		
 		<div>

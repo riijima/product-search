@@ -27,12 +27,7 @@ public class SearchController {
 	
 	@PostMapping("search/search")
 	public ModelAndView search(ModelAndView mav, @ModelAttribute SearchForm searchForm) {
-		System.out.println(searchForm.getSearchProductId());
-		System.out.println(searchForm.getSearchProductName());
-		System.out.println(searchForm.getSearchMakerId());
-		System.out.println(searchForm.getSearchMakerName());
-		
-		searchForm.setUrl("C:\\ryoko\\images\\ion.jpg");
+		mav.addObject("url", "/images/ion.jpg");
 		mav.setViewName("search/list");
 		return mav;
 	}

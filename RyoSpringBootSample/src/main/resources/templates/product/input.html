@@ -38,12 +38,12 @@
 			<label for="tagIds" class="col-sm-3 col-form-label text-right">属性タグ</label>
 			<div class="col-sm-4">
 				<select multiple="multiple" id="tagIds" name="tagIds" class="form-control">
-					<option selected="selected">選択...</option>
-					<option>タグ1</option>
-					<option>タグ2</option>
-					<option>タグ3</option>
-					<option>タグ4</option>
-					<option>タグ5</option>
+					<option selected="selected" value="">選択...</option>
+					<option value="1">タグ1</option>
+					<option value="2">タグ2</option>
+					<option value="3">タグ3</option>
+					<option value="4">タグ4</option>
+					<option value="5">タグ5</option>
 				</select>
 			</div>
 		</div>
@@ -51,9 +51,13 @@
 		<div class="form-row">
 			<label for="attrTags" class="col-form-label col-sm-3 text-right">参考画像</label>
 			<div class="col-sm-6">
+				<input type="file" id="filechooser" style="display: none" multiple="multiple" name="imageFile" />
 				<div class="input-group">
-					<input type="file" id="filechooser" multiple="multiple" name="imageFile" class="form-control" placeholder="Please select your file..." autocomplete="off" readonly="readonly" />
+					<input type="text" id="filechooser_info" class="form-control" placeholder="Please select your file..." autocomplete="off" readonly="readonly" />
 					<span class="input-group-btn">
+						<button type="button" id="btn_browse" class="btn btn-default">
+							<i class="fa fa-file-text-o" aria-hidden="true"></i>
+						</button>
 						<button type="button" id="btn_trash" class="btn btn-default">
 							<i class="fa fa-trash" aria-hidden="true"></i>
 						</button>
@@ -70,6 +74,34 @@
 	</div>
 
 	</form>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" th:src="@{/webjars/jquery/jquery.min.js}"></script>
+
+	<!-- for page -->
+		<script type="text/javascript" th:inline="javascript">
+		$(function() {
+			$(document).on('change', ':file', function() {
+				var input = $(this),
+				numFiles = input.get(0).files ? input.get(0).files.length : 1,
+				label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+				input.parent().next(':text').val(label);
+			});
+			$('#filechooser').on('change', function() {
+				var files = $(this).prop('files');
+				$('#filechooser_info').val(files.length + " file(s) selected.");
+			});
+			$('#btn_browse').on('click', function() {
+				$('#filechooser').click();
+			});
+			$('#filechooser_info').on('click', function() {
+				$('#filechooser').click();
+			});
+			$('#btn_trash').on('click', function() {
+				$('#filechooser').val('');
+				$('#filechooser_info').val('');
+			});
+		});
+		</script>
 
 </body>
 </html>

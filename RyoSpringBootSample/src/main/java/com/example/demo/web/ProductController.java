@@ -18,20 +18,20 @@ public class ProductController {
 	}
 	
 	@PostMapping("input")
-	public ModelAndView input(ModelAndView mav, @ModelAttribute ProductForm from) {
-		System.out.println(from.getProductId());
+	public ModelAndView input(ModelAndView mav, @ModelAttribute ProductForm form) {
 		mav.setViewName("product/input");
 		return mav;
 	}
 
 	@PostMapping("confirm")
-	public ModelAndView confirm(ModelAndView mav, @ModelAttribute ProductForm from, BindingResult result) {
+	public ModelAndView confirm(ModelAndView mav, @ModelAttribute ProductForm form, BindingResult result) {
+		form.setImageFileName(form.getImageFile().getOriginalFilename());
 		mav.setViewName("product/confirm");
 		return mav;
 	}
 
 	@PostMapping("update")
-	public String update(ModelAndView mav, @ModelAttribute ProductForm from) {
+	public String update(ModelAndView mav, @ModelAttribute ProductForm form, BindingResult result) {
 		//TODO DBに登録する
 		return "redirect:/product/complete";
 	}

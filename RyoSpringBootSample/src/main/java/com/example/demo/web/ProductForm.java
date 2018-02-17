@@ -15,6 +15,8 @@ public class ProductForm {
 	private List<Integer> tagIds;
 	
 	private MultipartFile imageFile;
+	
+	private String imageFileName;
 
 	public Integer getProductId() {
 		return productId;
@@ -54,5 +56,13 @@ public class ProductForm {
 
 	public void setImageFile(MultipartFile imageFile) {
 		this.imageFile = imageFile;
+	}
+
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
 }

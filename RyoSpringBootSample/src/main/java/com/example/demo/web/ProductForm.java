@@ -18,6 +18,8 @@ public class ProductForm {
 	
 	private String imageFileName;
 
+	private String savedImageFilePath;
+
 	public Integer getProductId() {
 		return productId;
 	}
@@ -65,4 +67,28 @@ public class ProductForm {
 	public void setImageFileName(String imageFileName) {
 		this.imageFileName = imageFileName;
 	}
+
+    /**
+     * @return the savedImageFilePath
+     */
+    public String getSavedImageFilePath() {
+        return savedImageFilePath;
+    }
+
+    /**
+     * @param savedImageFilePath the savedImageFilePath to set
+     */
+    public void setSavedImageFilePath(String savedImageFilePath) {
+        this.savedImageFilePath = savedImageFilePath;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "ProductForm [productId=" + productId + ", productName=" + productName + ", productNameKana="
+                + productNameKana + ", tagIds=" + tagIds + ", imageFile=" + imageFile + ", imageFileName="
+                + imageFileName + ", savedImageFilePath=" + savedImageFilePath + "]";
+    }
 }

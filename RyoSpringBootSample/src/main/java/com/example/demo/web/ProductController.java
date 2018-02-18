@@ -30,18 +30,23 @@ public class ProductController {
 	@PostMapping("input")
 	public ModelAndView input(ModelAndView mav, @ModelAttribute ProductForm form) {
 		mav.setViewName("product/input");
+		mav.addObject("tagMap", productService.createTagMap());
 		return mav;
 	}
 
 	@PostMapping("confirm")
 	public ModelAndView confirm(ModelAndView mav, @ModelAttribute ProductForm form, BindingResult result) {
-		form.setImageFileName(form.getImageFile().getOriginalFilename());
+		// アップロードファイル名の退避
+	    form.setImageFileName(form.getImageFile().getOriginalFilename());
+		// アップロードファイルの退避
 		try {
             Path savedFilePath = productService.saveUploadedFileTemporary(form.getImageFile());
             form.setSavedImageFilePath(savedFilePath.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+		// セレクトボックスで選択された項目の名称を退避
+		productService.completeTagNames(form);
 		mav.setViewName("product/confirm");
 		return mav;
 	}
@@ -49,7 +54,7 @@ public class ProductController {
 	@PostMapping("update")
 	public String update(ModelAndView mav, @ModelAttribute ProductForm form, BindingResult result) {
 	    logger.info(form.toString());
-		//TODO DBに登録する
+		// DBに登録する
 	    productService.saveProduct(form);
 		return "redirect:/product/complete";
 	}

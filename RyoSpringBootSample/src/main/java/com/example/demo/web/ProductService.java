@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
@@ -28,4 +32,26 @@ public class ProductService {
         }
     }
 
+    public Map<Integer, String> createTagMap() {
+        Map<Integer, String> map = new LinkedHashMap<>();
+        map.put(1, "タグ1");
+        map.put(2, "タグ2");
+        map.put(3, "タグ3");
+        map.put(4, "タグ4");
+        map.put(5, "タグ5");
+        return map;
+    }
+
+    public void completeTagNames(ProductForm form) {
+        List<String> tagNames = form.getTagNames();
+        if (tagNames == null) {
+            tagNames = new ArrayList<>();
+            form.setTagNames(tagNames);
+        }
+        tagNames.clear();
+        Map<Integer, String> tagMap = createTagMap();
+        for (Integer id : form.getTagIds()) {
+            tagNames.add(tagMap.get(id));
+        }
+    }
 }

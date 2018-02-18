@@ -39,11 +39,7 @@
 			<div class="col-sm-4">
 				<select multiple="multiple" id="tagIds" name="tagIds" class="form-control">
 					<option selected="selected" value="">選択...</option>
-					<option value="1">タグ1</option>
-					<option value="2">タグ2</option>
-					<option value="3">タグ3</option>
-					<option value="4">タグ4</option>
-					<option value="5">タグ5</option>
+                     <option th:each="tag : ${tagMap}" th:value="${tag.key}" th:inline="text">[[${tag.value}]]</option>
 				</select>
 			</div>
 		</div>

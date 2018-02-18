@@ -14,7 +14,9 @@ public class ProductForm {
 	
 	private List<Integer> tagIds;
 	
-	private MultipartFile imageFile;
+    private List<String> tagNames;
+
+    private MultipartFile imageFile;
 	
 	private String imageFileName;
 
@@ -90,5 +92,19 @@ public class ProductForm {
         return "ProductForm [productId=" + productId + ", productName=" + productName + ", productNameKana="
                 + productNameKana + ", tagIds=" + tagIds + ", imageFile=" + imageFile + ", imageFileName="
                 + imageFileName + ", savedImageFilePath=" + savedImageFilePath + "]";
+    }
+
+    /**
+     * @return the tagNames
+     */
+    public List<String> getTagNames() {
+        return tagNames;
+    }
+
+    /**
+     * @param tagNames the tagNames to set
+     */
+    public void setTagNames(List<String> tagNames) {
+        this.tagNames = tagNames;
     }
 }

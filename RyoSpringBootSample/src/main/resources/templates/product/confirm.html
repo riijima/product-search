@@ -42,8 +42,10 @@
 		<div class="form-group row">
 			<label for="tagIds" class="col-sm-2 control-label">属性タグ</label>
 			<input type="hidden" th:field="*{tagIds}"/>
+            <input type="hidden" th:field="*{tagNames}"/>
 			<div class="col-sm-4">
-				<p class="form-control-static" th:text="*{tagIds}">XXXXXXXX</p>
+				<p class="form-control-static" th:text="*{tagIds}">属性ID</p>
+                <p class="form-control-static" th:text="*{tagNames}">属性名</p>
 			</div>
 		</div>
 	

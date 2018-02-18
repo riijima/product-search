@@ -44,7 +44,7 @@
         style="width: 90%; display: inline-block; text-align: center;">
         <div class="form-group row"
           th:classappend="${#fields.hasErrors('tel')}? 'has-error'">
-          <label for="tel" class="col-sm-2 control-label">名前</label> <input
+          <label for="tel" class="col-sm-2 control-label">電話</label> <input
             type="text" class="col-sm-5 form-control" id="tel"
             placeholder="電話" th:field="*{tel}" />
           <div class="help-block" th:if="${#fields.hasErrors('tel')}">
@@ -58,7 +58,7 @@
         style="width: 90%; display: inline-block; text-align: center;">
         <div class="form-group row"
           th:classappend="${#fields.hasErrors('address')}? 'has-error'">
-          <label for="address" class="col-sm-2 control-label">名前</label>
+          <label for="address" class="col-sm-2 control-label">住所</label>
           <input type="text" class="col-sm-5 form-control" id="address"
             placeholder="住所" th:field="*{address}" />
           <div class="help-block"

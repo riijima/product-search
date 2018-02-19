@@ -9,12 +9,21 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Service
 public class ProductService {
+    private Log logger = LogFactory.getLog(getClass());
+
+    @Autowired
+    private ObjectMapper objectMapper;
 
     public Path saveUploadedFileTemporary(MultipartFile imageFile) throws IOException {
         // 一時ファイルを作成して、アップロードされた画像を保存
@@ -29,6 +38,13 @@ public class ProductService {
         Path savedFile = Paths.get(form.getSavedImageFilePath());
         if (Files.notExists(savedFile)) {
             throw new RuntimeException("アップロードファイルが見つかりません");
+        }
+        // JSON復元
+        try {
+            ProductForm object = objectMapper.readValue(form.getCondition(), ProductForm.class);
+            logger.debug(object.toString());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

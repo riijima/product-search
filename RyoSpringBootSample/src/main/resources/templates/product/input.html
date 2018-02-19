@@ -110,6 +110,16 @@
                     	productName: $('input[name=productName]').val(),
                     	productNameKana: $('input[name=productNameKana]').val(),
                     	tagIds: getSelectedIds('select[name=tagIds]').get(),
+                    }, function(key, value) {
+                    	if (key == 'productId') {
+                    		return Number(value);
+                    	} else if (key == 'tagIds') {
+                    		var result = value.map(function( val ) {
+                    		    return Number(val);
+                    		})
+                    		return result;
+                    	}
+                    	return value;
                     })
                 ));
 

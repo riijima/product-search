@@ -65,7 +65,7 @@
 		<br/>
 		<div>
 			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{/search/search}">戻る</button>
-			<button type="submit" id="btn_update" value="update" class="btn btn-primary" th:formaction="@{/product/confirm}">確認</button>
+			<button type="button" id="btn_update" value="update" class="btn btn-primary" th:formaction="@{/product/confirm}">確認</button>
 		</div>
 	</div>
 
@@ -96,6 +96,26 @@
 				$('#filechooser').val('');
 				$('#filechooser_info').val('');
 			});
+
+            var getSelectedIds = function(s) {
+                var f = function() { return $(this).val(); };
+                return $(s).find('option:selected').not('[value=-1]').map(f);
+            };
+
+            $('#btn_update').on('click', function() {
+                $('input[name=condition]').remove();
+                $('#productForm').append($('<input type="hidden" name="condition" />').val(
+                    JSON.stringify({
+                    	productId: $('input[name=productId]').val(),
+                    	productName: $('input[name=productName]').val(),
+                    	productNameKana: $('input[name=productNameKana]').val(),
+                    	tagIds: getSelectedIds('select[name=tagIds]').get(),
+                    })
+                ));
+
+                $('#productForm').submit();
+                return false;
+            });
 		});
 		</script>
 

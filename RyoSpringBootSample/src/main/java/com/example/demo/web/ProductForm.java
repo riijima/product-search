@@ -21,6 +21,8 @@ public class ProductForm {
 	private String imageFileName;
 
 	private String savedImageFilePath;
+	
+	private String condition;
 
 	public Integer getProductId() {
 		return productId;
@@ -84,7 +86,21 @@ public class ProductForm {
         this.savedImageFilePath = savedImageFilePath;
     }
 
-    /* (non-Javadoc)
+    /**
+	 * @return the condition
+	 */
+	public String getCondition() {
+		return condition;
+	}
+
+	/**
+	 * @param condition the condition to set
+	 */
+	public void setCondition(String condition) {
+		this.condition = condition;
+	}
+
+	/* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override

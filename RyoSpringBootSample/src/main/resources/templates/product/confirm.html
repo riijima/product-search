@@ -62,6 +62,8 @@
 			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{input}">戻る</button>
 			<button type="submit" id="btn_update" value="update" class="btn btn-primary" th:formaction="@{update}">登録</button>
 		</div>
+		
+		<input type="hidden" name="condition" th:value="*{condition}" />
 	</div>
 
 	</form>

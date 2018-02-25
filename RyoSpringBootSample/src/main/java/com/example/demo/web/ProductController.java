@@ -3,6 +3,7 @@ package com.example.demo.web;
 import java.io.IOException;
 import java.nio.file.Path;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +31,19 @@ public class ProductController {
 	@PostMapping("input")
 	public ModelAndView input(ModelAndView mav, @ModelAttribute ProductForm form) {
 		mav.setViewName("product/input");
+		form.setImageFileUrl("/images/ion.jpg");
 		mav.addObject("tagMap", productService.createTagMap());
 		return mav;
 	}
 
 	@PostMapping("confirm")
 	public ModelAndView confirm(ModelAndView mav, @ModelAttribute ProductForm form, BindingResult result) {
-		// アップロードファイル名の退避
-	    form.setImageFileName(form.getImageFile().getOriginalFilename());
 		// アップロードファイルの退避
 		try {
-            Path savedFilePath = productService.saveUploadedFileTemporary(form.getImageFile());
+            Path savedFilePath = productService.saveUploadedFileTemporary(form.getUploadFile());
             form.setSavedImageFilePath(savedFilePath.toString());
+    		// アップロードファイル名の退避
+    	    form.setUploadFileName("/temp-images/" + FilenameUtils.getName(savedFilePath.toString()));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

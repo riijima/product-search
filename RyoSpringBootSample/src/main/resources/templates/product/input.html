@@ -44,24 +44,33 @@
 			</div>
 		</div>
 		
-		<div class="form-row">
-			<label for="attrTags" class="col-form-label col-sm-3 text-right">参考画像</label>
-			<div class="col-sm-6">
-				<input type="file" id="filechooser" style="display: none" multiple="multiple" name="imageFile" />
-				<div class="input-group">
-					<input type="text" id="filechooser_info" class="form-control" placeholder="Please select your file..." autocomplete="off" readonly="readonly" />
-					<span class="input-group-btn">
-						<button type="button" id="btn_browse" class="btn btn-default">
-							<i class="fa fa-file-text-o" aria-hidden="true"></i>
-						</button>
-						<button type="button" id="btn_trash" class="btn btn-default">
-							<i class="fa fa-trash" aria-hidden="true"></i>
-						</button>
-					</span>
-				</div>
-			</div>
-		</div>
-		
+        <div class="form-row m-3" th:classappend="${imageFileUrl} ? 'd-done'">
+            <label for="imageFileUrl" class="col-form-label col-sm-3 text-right"></label>
+            <div class="col-sm-8">
+                <div class="card" style="width: 10rem;">
+                    <div class="card-header text-center">現在の画像</div>
+                    <img class="card-img-top" th:src="@{*{#strings.defaultString(imageFileUrl, '/image/no_image.png')}}" src="../../static/image/no_image.png" alt="" width="150" height="150" />
+                    <div class="card-body">
+                        <input type="checkbox" name="imgDelete" value="1" />削除
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name="imageFileUrl" th:value="*{imageFileUrl}" />
+        </div>
+        <div class="form-row m-3" th:classappend="${#fields.hasErrors('uploadFile')}? 'error-input'">
+            <label for="uploadFile" class="col-form-label col-sm-3 text-right">参考画像</label>
+            <div class="col-sm-8">
+                <input type="file" id="filechooser" style="display: none" multiple="multiple" name="uploadFile" th:field="*{uploadFile}" />
+                <div class="input-group">
+                    <input type="text" id="filechooser_info" name="uploadFileName" th:value="*{uploadFileName}" class="form-control" placeholder="Please select your file..." autocomplete="off" readonly="readonly" />
+                    <span class="input-group-btn">
+                        <button type="button" id="btn_browse" class="btn btn-default">
+                            <i class="fa fa-file-image-o" aria-hidden="true"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>		
 		<br/>
 		<div>
 			<button type="submit" id="btn_back" value="back" class="btn btn-default" th:formaction="@{/search/search}">戻る</button>

@@ -16,9 +16,11 @@ public class ProductForm {
 	
     private List<String> tagNames;
 
-    private MultipartFile imageFile;
+    private MultipartFile uploadFile;
 	
-	private String imageFileName;
+	private String uploadFileName;
+	
+	private String imageFileUrl;
 
 	private String savedImageFilePath;
 	
@@ -56,23 +58,49 @@ public class ProductForm {
 		this.tagIds = tagIds;
 	}
 
-	public MultipartFile getImageFile() {
-		return imageFile;
-	}
-
-	public void setImageFile(MultipartFile imageFile) {
-		this.imageFile = imageFile;
-	}
-
-	public String getImageFileName() {
-		return imageFileName;
-	}
-
-	public void setImageFileName(String imageFileName) {
-		this.imageFileName = imageFileName;
-	}
-
     /**
+	 * @return the uploadFile
+	 */
+	public MultipartFile getUploadFile() {
+		return uploadFile;
+	}
+
+	/**
+	 * @param uploadFile the uploadFile to set
+	 */
+	public void setUploadFile(MultipartFile uploadFile) {
+		this.uploadFile = uploadFile;
+	}
+
+	/**
+	 * @return the uploadFileName
+	 */
+	public String getUploadFileName() {
+		return uploadFileName;
+	}
+
+	/**
+	 * @param uploadFileName the uploadFileName to set
+	 */
+	public void setUploadFileName(String uploadFileName) {
+		this.uploadFileName = uploadFileName;
+	}
+
+	/**
+	 * @return the imageFileUrl
+	 */
+	public String getImageFileUrl() {
+		return imageFileUrl;
+	}
+
+	/**
+	 * @param imageFileUrl the imageFileUrl to set
+	 */
+	public void setImageFileUrl(String imageFileUrl) {
+		this.imageFileUrl = imageFileUrl;
+	}
+
+	/**
      * @return the savedImageFilePath
      */
     public String getSavedImageFilePath() {
@@ -106,8 +134,8 @@ public class ProductForm {
     @Override
     public String toString() {
         return "ProductForm [productId=" + productId + ", productName=" + productName + ", productNameKana="
-                + productNameKana + ", tagIds=" + tagIds + ", imageFile=" + imageFile + ", imageFileName="
-                + imageFileName + ", savedImageFilePath=" + savedImageFilePath + "]";
+                + productNameKana + ", tagIds=" + tagIds + ", imageFileUrl=" + imageFileUrl + ", uploadFileName="
+                + uploadFileName + ", savedImageFilePath=" + savedImageFilePath + "]";
     }
 
     /**

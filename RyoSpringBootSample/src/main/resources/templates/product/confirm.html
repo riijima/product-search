@@ -51,10 +51,10 @@
 	
 		<div class="form-group row">
 			<label for="tagIds" class="col-sm-2 control-label">参考画像ファイル</label>
-			<input type="hidden" th:field="*{imageFileName}"/>
+			<input type="hidden" th:field="*{uploadFileName}"/>
             <input type="hidden" th:field="*{savedImageFilePath}"/>
 			<div class="col-sm-4">
-				<p class="form-control-static" th:text="*{imageFileName}">XXXXXXXX.jpg</p>
+			     <img th:src="@{*{#strings.defaultString(uploadFileName, '/common/img/no_image.png')}}" src="../../static/common/img/no_image.png" class="img-responsive center-block img-thumbnail" alt="" width="150" height="150" />
 			</div>
 		</div>
 		
